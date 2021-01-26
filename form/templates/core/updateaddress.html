@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block  messages %}
+<div class="col-sm-12  text-center ">
+	{% if messages %}
+{% for message in messages %}
+<h3 class="alert alert-warning offset-7"> {{message}} </h3> 
+  
+
+{% endfor %}
+
+{% endif %}
+
+	
+</div>
+
+			{% endblock messages %}
+
+{ % endblock %}
+{% block content %}
+<div class="col-sm-12 my-5 jumbo">
+	<form method="POST" fm.id >
+		{% csrf_token %}
+		{{fm.as_p}}
+		<input type="submit" name="" value=" update address" class="btn btn-success">
+		<a href="{% url 'dashboard'%}" class="btn btn-danger">back</a>
+		
+	</form>
+		
+	
+</div>
+{% endblock %}

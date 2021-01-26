@@ -1,0 +1,44 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+
+ {% block  messages %}
+
+	{% if messages %}
+	{% for message in messages %}
+    <div class="container alert alert-success my-2 offset-9">{{message}}</div>
+     {% endfor %}
+
+	{% endif %}
+
+
+  {% endblock %}
+
+{% block content %}
+<div class=" container alert alert-primary text-center" >
+		<h3 >Signup Page</h3>
+	</div>
+
+<div class="col-sm-12  jumbo py-5 ">
+	
+	<form method="POST">
+		
+		{% csrf_token %}
+		
+		{% for f in fm %}
+		<div class="form-group text-warning ">
+		<h5>{{f.label_tag}}{{f}}{{f.errors}} </h5>
+		</div>
+		{% endfor %}
+		<div class="container text-center">
+		<input type="submit" name="" value="signup" class="btn btn-info">
+		<a href="{% url 'login'%}" class="btn btn-success ">Login Here</a>
+		</div>
+	</form>
+
+		
+	
+</div>
+			
+			
+			{% endblock %}

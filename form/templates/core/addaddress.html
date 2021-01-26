@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+ {% block  messages %}
+
+	{% if messages %}
+	{% for message in messages %}
+    <div class="container alert alert-success my-2 offset-9">{{message}}</div>
+     {% endfor %}
+
+	{% endif %}
+
+
+  {% endblock %}
+
+{% block content %}
+<div class="col-sm-12 py-5 text-center colo">
+	<form method="POST">
+		{% csrf_token %}
+		{% for  form in fm %}
+		<h3 class="text-warning">{{form.label}}{{form}}</h3><br><br>
+		{% endfor %}
+		<div class="text-center">
+		<input type="submit" name="" value="Add address" class="btn btn-success ">
+		<a href="{% url 'dashboard'%}" class="btn btn-danger">Cancel</a>
+		</div>
+		
+	</form>
+		
+	
+</div>
+{% endblock %}
